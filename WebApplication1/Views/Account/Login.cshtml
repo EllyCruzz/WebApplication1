@@ -1,0 +1,39 @@
+﻿@model WebApplication1.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<form class="form">
+  <div class="section">
+    <div class="control-group">
+      <label class="control-label">Selecione algo</label>
+      <select class="control">
+            <option disabled>Selecione Algo</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Escreva algo</label>
+      <input type="text" class="control"/>
+    </div>
+
+  </div>
+
+  <div class="section">
+    <div class="control-group">
+      <label class="control-label">Escreva algo</label>
+      <input type="text" class="control"/>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Marque algo</label>
+      <label>
+        <input type="checkbox"/>
+        Concordo (checkbox)
+      </label>
+    </div>
+
+  </div>
+</form>
