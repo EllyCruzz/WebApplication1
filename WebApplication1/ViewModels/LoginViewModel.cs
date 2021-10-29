@@ -9,11 +9,12 @@ namespace WebApplication1.ViewModels
     public class LoginViewModel
     {
         [Required]
-        [EmailAddress]
-        public string Email { get; set; }
+
+        public string Usuario { get; set; }
+
         [Required]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string Senha { get; set; }
 
         [Display(Name = "Remember Me")]
         public bool RememberMe { get; set; }

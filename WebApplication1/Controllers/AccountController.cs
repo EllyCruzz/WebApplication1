@@ -37,11 +37,11 @@ namespace WebApplication1.Controllers
             {
                 var user = new IdentityUser
                 {
-                    UserName = model.Email,
-                    Email = model.Email,
+                    UserName = model.Usuario,
+                    Email = model.Usuario
                 };
 
-                var result = await _userManager.CreateAsync(user, model.Password);
+                var result = await _userManager.CreateAsync(user, model.Senha);
 
                 if (result.Succeeded)
                 {
@@ -73,7 +73,7 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(user.Email, user.Password, user.RememberMe, false);
+                var result = await _signInManager.PasswordSignInAsync(user.Usuario, user.Senha, user.RememberMe, false);
 
                 if (result.Succeeded)
                 {

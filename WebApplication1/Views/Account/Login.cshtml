@@ -5,35 +5,31 @@
 
 <h1>Login</h1>
 
-<form class="form">
-  <div class="section">
-    <div class="control-group">
-      <label class="control-label">Selecione algo</label>
-      <select class="control">
-            <option disabled>Selecione Algo</option>
-      </select>
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Usuario"></label>
+                <input asp-for="Usuario" class="form-control" />
+                <span asp-validation-for="Usuario" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Senha"></label>
+                <input asp-for="Senha" class="form-control" />
+                <span asp-validation-for="Senha" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input asp-for="RememberMe" type="checkbox" class="custom-control-input">
+                    <label class="custom-control-label" asp-for="RememberMe">@Html.DisplayNameFor(m => m.RememberMe)</label>
+                </div>
+
+            </div>
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+
     </div>
-
-    <div class="control-group">
-      <label class="control-label">Escreva algo</label>
-      <input type="text" class="control"/>
-    </div>
-
-  </div>
-
-  <div class="section">
-    <div class="control-group">
-      <label class="control-label">Escreva algo</label>
-      <input type="text" class="control"/>
-    </div>
-
-    <div class="control-group">
-      <label class="control-label">Marque algo</label>
-      <label>
-        <input type="checkbox"/>
-        Concordo (checkbox)
-      </label>
-    </div>
-
-  </div>
-</form>
+</div>

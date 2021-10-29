@@ -10,16 +10,18 @@ namespace WebApplication1.ViewModels
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
-        public string Email { get; set; }
+        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage =
+            "Números e caracteres especiais não são permitidos no usuário.")]
+        public string Usuario { get; set; }
         [Required]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm Password")]
-        [Compare("Password", ErrorMessage = "Password and confirmation password not match.")]
-        public string ConfirmPassword { get; set; }
+        public string Senha { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirme Senha")]
+        [Compare("Senha", ErrorMessage = "Senha e confirmação de senha não conferem.")]
+        public string ConfirmeSenha { get; set; }
     }
 
 }
