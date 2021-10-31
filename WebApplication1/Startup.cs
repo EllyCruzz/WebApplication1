@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1.Models;
+using WebApplication1.ViewModels;
 
 namespace WebApplication1
 {
@@ -27,6 +28,10 @@ namespace WebApplication1
         {
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDBContext>();
             services.AddControllersWithViews();
+            string stringConexao = "Server=LAPTOPRVT4934F\\MSSQLSERVER01; Database=Atendimento;Uid=root;pwd=1234";
+            services.AddDbContext<Contexto>(options =>
+            options.UseSqlServer(stringConexao));
+
             string connectionString = Configuration.GetConnectionString("default");
             services.AddDbContext<AppDBContext>(c => c.UseSqlServer(connectionString));
         }

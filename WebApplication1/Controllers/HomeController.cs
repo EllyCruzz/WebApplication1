@@ -25,7 +25,7 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Dashboard()
         {
             return View();
         }

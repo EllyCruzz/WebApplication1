@@ -16,6 +16,7 @@ namespace WebApplication1.Models
         public AppDBContext(DbContextOptions options) : base(options)
         {
             _options = options;
+          
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -23,5 +24,9 @@ namespace WebApplication1.Models
             base.OnModelCreating(modelBuilder);
 
         }
+
+    
     }
+
+ 
 }
