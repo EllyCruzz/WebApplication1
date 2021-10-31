@@ -11,11 +11,12 @@ namespace WebApplication1.ViewModels
 {
     public class Contexto : DbContext
     {
-
+        private readonly DbContextOptions _options;
         public Contexto(DbContextOptions<Contexto> options) : base(options)
         {
-         
-            Database.EnsureCreated();
+
+            // Database.EnsureCreated();
+            _options = options;
         }
 
         public DbSet<DashboardViewModel> Dashboard { get; set; }
