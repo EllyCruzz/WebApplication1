@@ -28,7 +28,7 @@ namespace WebApplication1
         {
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDBContext>();
             services.AddControllersWithViews();
-            string stringConexao = "Server=LAPTOPRVT4934F\\MSSQLSERVER01; Database=Atendimento;Uid=root;pwd=1234";
+            string stringConexao = "Server=LAPTOPRVT4934F; Database=NewCodeFirstDB;";
             services.AddDbContext<Contexto>(options =>
             options.UseSqlServer(stringConexao));
 
@@ -58,7 +58,7 @@ namespace WebApplication1
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Dashboard}/{id?}");
             });
         }
     }

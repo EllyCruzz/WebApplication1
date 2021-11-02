@@ -19,10 +19,15 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="pagedlist.mvc" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\img\logo-alpha-sistemas.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Dashboard\" />
   </ItemGroup>
 
 </Project>
