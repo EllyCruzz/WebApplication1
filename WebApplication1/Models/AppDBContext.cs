@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
-
 namespace WebApplication1.Models
 {
     public class AppDBContext : IdentityDbContext
@@ -16,17 +14,11 @@ namespace WebApplication1.Models
         public AppDBContext(DbContextOptions options) : base(options)
         {
             _options = options;
-          
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
         }
-
-    
     }
-
- 
 }
