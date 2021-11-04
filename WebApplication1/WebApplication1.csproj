@@ -25,9 +25,4 @@
   <ItemGroup>
     <None Include="wwwroot\img\logo-alpha-sistemas.png" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Dashboard\" />
-  </ItemGroup>
-
 </Project>

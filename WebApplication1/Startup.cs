@@ -26,13 +26,11 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = Configuration.GetConnectionString("default");
+
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDBContext>();
             services.AddControllersWithViews();
-            string stringConexao = "Server=LAPTOPRVT4934F; Database=NewCodeFirstDB;";
-            services.AddDbContext<Contexto>(options =>
-            options.UseSqlServer(stringConexao));
-
-            string connectionString = Configuration.GetConnectionString("default");
+            services.AddDbContext<Contexto>(c => c.UseSqlServer(connectionString));
             services.AddDbContext<AppDBContext>(c => c.UseSqlServer(connectionString));
         }
 
@@ -47,10 +45,9 @@ namespace WebApplication1
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -58,7 +55,7 @@ namespace WebApplication1
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Dashboard}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
             });
         }
     }
