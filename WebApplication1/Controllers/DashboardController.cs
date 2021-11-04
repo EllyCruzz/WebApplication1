@@ -13,11 +13,11 @@ namespace WebApplication1.Controllers
     public class DashboardController : Controller
     {
         private readonly Contexto _context;
-        
+
         // GET: dashboard
-        public async Task<IActionResult> Dashboard()
+        public IActionResult Index()
         {
-            return View(await _context.Dashboard.ToListAsync());
+            return View();
             // return RedirectToAction("Dashboard");
         }
 
