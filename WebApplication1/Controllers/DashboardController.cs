@@ -15,16 +15,20 @@ namespace WebApplication1.Controllers
 
         // GET: dashboard
 
-        
-        
-        public async Task<IActionResult> Dashboard()
+
+
+        //     public async Task<IActionResult> Dashboard()
+        //     {
+
+
+        //        return View(await _context.Dashboard.ToListAsync());
+        // return RedirectToAction("Dashboard");
+        //
+
+        public IActionResult Index()
         {
-
-          
-            return View(await _context.Dashboard.ToListAsync());
-            // return RedirectToAction("Dashboard");
+            return View();
         }
-
         private readonly Contexto _context;
 
         public DashboardController(Contexto context)
