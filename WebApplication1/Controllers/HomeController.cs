@@ -15,11 +15,13 @@ namespace WebApplication1.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, Contexto context)
         {
             _logger = logger;
+            _context = context;
         }
 
+        private readonly Contexto _context;
         public IActionResult Index()
         {
             return View();
@@ -37,5 +39,7 @@ namespace WebApplication1.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
     }
 }

@@ -1,0 +1,44 @@
+﻿@model WebApplication1.ViewModels.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>Dashboard</h1>
+            
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <th class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Horario)
+            </th>
+            <th class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </th>
+            <th class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IdSuporte)
+            </th>
+            <th class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Local)
+            </th>
+            <th class="col-sm-2 col-form-label-sm">
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <!--   <th class="col-sm-2"> -->
+          <!-- Html.DisplayNameFor(model => model.Distanciakm)-->
+          <!-- </th> -->
+        </table>
+    </div>
+</div>
+            
+<div onload="time()">
+    <a asp-action="Index">Voltar para página inicial</a>
+    <div id="dataehora" style="width: 800px; height: 400px; position: relative;"></div>
+    <div id="piechart_3d" style="width: 800px; height: 400px; position: relative;"></div>
+</div>
+
+
+  

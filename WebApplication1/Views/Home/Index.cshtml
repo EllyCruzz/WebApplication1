@@ -1,59 +1,35 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model WebApplication1.Models.AgendaModel
+
+@{
+    ViewData["Title"] = "HomePage";
 }
 
 <div class="text-center">
-    <h2 class="display-4">Alpha Sistemas</h2>
-    
+    <!-- <h2 class="display-4">Alpha Sistemas</h2>   -->
+
 </div>
 
-<form class="form">
-    <div class="section">
-        <div class="control-group">
-            <label class="control-label">Nome</label>
-            <select class="control">
-                <option>Selecione</option>
-                <option>Diassis</option>
-                <option>Gil</option>
-                <option>Queiroz</option>
-            </select>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label">Empresa</label>
-            <select class="control">
-                <option>Selecione</option>
-                <option>Blinclass</option>
-                <option>Maluzinha</option>
-                <option>BlessFit</option>
-                <option>Gente Inocente</option>
-            </select>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label">Horário</label>
-            <select class="control">
-                <option>Selecione</option>
-                <option>1º Horário</option>
-                <option>2º Horário</option>
-                <option>3º Horário</option>
-                <option>4º Horário</option>
-            </select>
-        </div>
-
-        <div class="control-group">
 
 
-            <input type="button" class="btn-primary" value="Checkin" />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <th class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Horario)
+            </th>
+            <th class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </th>
+            <th class="col-sm-2 ">
+                @Html.DisplayNameFor(model => model.Status)
+                <form action="" target="_blank">
+                    <input type="submit" value="Checkin" />
+                </form>
+            </th>
+            <!--   <th class="col-sm-2"> -->
+            <!--       Html.DisplayNameFor(Detalhes) -->
+            <!--   </th> -->
 
-
-
-        </div>
-
-
+        </table>
     </div>
-
-  
-
-   
-</form>
+</div>
