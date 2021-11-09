@@ -4,8 +4,17 @@
     ViewData["Title"] = "Dashboard";
 }
 
+<link rel="stylesheet" type="text/css" href="~/css/site.css" />
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
+<div onload="time()" id="dataehora" style="width: 800px; height: 400px; position: relative;"></div>
+
+
+
 <h1>Dashboard</h1>
-            
+<div id="piechart_3d" style="width: 800px; height: 400px; position: relative;"></div>
 <div class="row">
     <div class="col-md-12">
         <table class="table">
@@ -28,17 +37,11 @@
                 @Html.DisplayNameFor(model => model.Status)
             </th>
             <!--   <th class="col-sm-2"> -->
-          <!-- Html.DisplayNameFor(model => model.Distanciakm)-->
-          <!-- </th> -->
+            <!-- Html.DisplayNameFor(model => model.Distanciakm)-->
+            <!-- </th> -->
         </table>
     </div>
 </div>
-            
-<div onload="time()">
-    <a asp-action="Index">Voltar para página inicial</a>
-    <div id="dataehora" style="width: 800px; height: 400px; position: relative;"></div>
-    <div id="piechart_3d" style="width: 800px; height: 400px; position: relative;"></div>
-</div>
 
 
-  
+<!-- <a asp-action="Index">Voltar para página inicial</a> -->
