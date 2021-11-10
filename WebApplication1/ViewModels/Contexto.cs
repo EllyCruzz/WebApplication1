@@ -21,5 +21,9 @@ namespace WebApplication1.Models
             // Database.EnsureCreated();
             _options = options;
         }
+
+        public Contexto()
+        {
+        }
     }
 }
