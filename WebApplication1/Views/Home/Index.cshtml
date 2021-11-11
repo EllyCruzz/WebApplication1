@@ -22,8 +22,9 @@
             </th>
             <th class="col-sm-2 ">
                 @Html.DisplayNameFor(model => model.Status)
-                <form action="" target="_blank">
-                    <input type="submit" value="Checkin" />
+                <!-- method="post" asp-action="CheckInOut" -->
+                <form>
+                    <button id="checkInOutButton" type="submit">Checkin</button>
                 </form>
             </th>
             <!--   <th class="col-sm-2"> -->
