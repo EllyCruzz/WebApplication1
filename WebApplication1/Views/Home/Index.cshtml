@@ -34,3 +34,24 @@
         </table>
     </div>
 </div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#checkInOutButton").click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Home/CheckInOut',
+                    data: { },
+                    success: function (result) {
+                        $("#checkInOutButton").html(result);
+                        console.log("Chamou o CheckInOut");
+                    },
+                    error: function (result){
+                        console.log("Erro: ", result);
+                    }
+                });
+            });
+        })
+    </script>
+}
