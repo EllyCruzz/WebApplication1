@@ -1,4 +1,4 @@
-﻿@model WebApplication1.Models.AgendaModel
+﻿@model IEnumerable<WebApplication1.Models.AgendaModel>
 
 @{
     ViewData["Title"] = "HomePage";
@@ -14,18 +14,38 @@
 <div class="row">
     <div class="col-md-6">
         <table class="table">
-            <th class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Horario)
-            </th>
-            <th class="col-sm-2">
-                @Html.DisplayNameFor(model => model.IdCliente)
-            </th>
-            <th class="col-sm-2 ">
-                @Html.DisplayNameFor(model => model.Status)
-                <form action="" target="_blank">
-                    <input type="submit" value="Checkin" />
-                </form>
-            </th>
+            <tr>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Horario)
+                </th>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IdCliente)
+                </th>
+                <th class="col-sm-2 ">
+                    @Html.DisplayNameFor(model => model.Status)
+                    <!-- method="post" asp-action="CheckInOut" -->
+                    <form>
+                        <button id="checkInOutButton" type="submit">Checkin</button>
+                    </form>
+                </th>
+            </tr>
+
+            @foreach (var model in Model)
+            {
+                <tr>
+                    <th>
+                        @Html.DisplayFor(modelItem => model.Horario)
+                    </th>
+                    <th class="col-sm-2">
+                        @Html.DisplayFor(modelItem => model.IdCliente)
+                    </th>
+                    <th class="col-sm-2 ">
+                        @Html.DisplayFor(modelItem => model.Status)
+
+                    </th>
+                </tr>
+            }
+
             <!--   <th class="col-sm-2"> -->
             <!--       Html.DisplayNameFor(Detalhes) -->
             <!--   </th> -->
@@ -33,3 +53,22 @@
         </table>
     </div>
 </div>
+
+@section Scripts{
+    <script type="text/javascript">$(document).ready(function () {
+            $("#checkInOutButton").click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Home/CheckInOut',
+                    data: { },
+                    success: function (result) {
+                        $("#checkInOutButton").html(result);
+                        console.log("Chamou o CheckInOut");
+                    },
+                    error: function (result){
+                        console.log("Erro: ", result);
+                    }
+                });
+            });
+        })</script>
+}

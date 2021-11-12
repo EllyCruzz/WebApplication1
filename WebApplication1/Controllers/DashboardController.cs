@@ -8,9 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using WebApplication1.Models;
-using WebApplication1.ViewModels;
-using System.Web;
-using System.Data.SqlClient;
+
+
 
 namespace WebApplication1.Controllers
 {
@@ -19,7 +18,21 @@ namespace WebApplication1.Controllers
 
         // GET: dashboard
 
+        
 
+        public DashboardController(Contexto context)
+        {
+            _context = context;
+        }
+        private readonly Contexto _context;
+        public async Task<IActionResult> Index()
+        {
+            var agenda = _context.Agenda
+                .Include(c => c.Cliente)
+                .Include(c => c.Suporte)
+                .AsNoTracking();
+            return View(await agenda.ToListAsync());
+        }
 
         //     public async Task<IActionResult> Dashboard()
         //     {
@@ -28,20 +41,14 @@ namespace WebApplication1.Controllers
         //        return View(await _context.Dashboard.ToListAsync());
         // return RedirectToAction("Dashboard");
         //
-      //  public DBContext db = new DbContext();
-        public IActionResult Index()
-        {
-          
-            return View(Contexto.Agenda.ToList());
-       
+        //  public DBContext db = new DbContext();
+        //  public IActionResult Index()
+        // {
 
-        }
-        private readonly Contexto _context;
+        //    return View(Contexto.Agenda.ToList());
 
-        public DashboardController(Contexto context)
-        {
-            _context = context;
-        }
+
+        //   }
 
 
 

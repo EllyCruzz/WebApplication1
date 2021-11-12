@@ -22,6 +22,15 @@ namespace WebApplication1.Models
             _options = options;
         }
 
+      public IEnumerable<AgendaModel> GetAll()
+       {
+           using (var context = new Contexto())
+            {
+              
+               return context.Agenda;
+            }
+        }
+
         public Contexto()
         {
         }

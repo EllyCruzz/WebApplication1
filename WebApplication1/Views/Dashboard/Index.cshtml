@@ -1,4 +1,14 @@
-﻿@model WebApplication1.ViewModels.DashboardViewModel
+﻿<link rel="stylesheet" type="text/css" href="~/css/site.css" />
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
+<div onload="time()" id="dataehora" style="width: 800px; height: 400px; position: relative;"></div>
+
+<div id="piechart_3d" style="width: 800px; height: 400px; position: relative;"></div>
+
+
+@model IEnumerable<WebApplication1.ViewModels.DashboardViewModel>
 
 @{
 
@@ -6,20 +16,16 @@
 
 
 }
-    <link rel="stylesheet" type="text/css" href="~/css/site.css" />
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
 
-    <div onload="time()" id="dataehora" style="width: 800px; height: 400px; position: relative;"></div>
 
+<h1>Dashboard</h1>
 
-
-    <h1>Dashboard</h1>
-    <div id="piechart_3d" style="width: 800px; height: 400px; position: relative;"></div>
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table">
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
                 <th class="col-sm-2">
                     @Html.DisplayNameFor(model => model.Horario)
                 </th>
@@ -38,12 +44,37 @@
                 <th class="col-sm-2">
                     @Html.DisplayNameFor(model => model.Status)
                 </th>
-                <!--   <th class="col-sm-2"> -->
-                <!-- Html.DisplayNameFor(model => model.Distanciakm)-->
-                <!-- </th> -->
-            </table>
-        </div>
+            </tr>
+            @foreach (var model in Model)
+            {
+                <tr>
+                    <th class="col-sm-2">
+                        @Html.DisplayFor(modelItem => model.Horario)
+                    </th>
+                    <th class="col-sm-2">
+                        @Html.DisplayFor(modelItem => model.IdCliente)
+                    </th>
+                    <th class="col-sm-2">
+                        @Html.DisplayFor(modelItem => model.IdSuporte)
+                    </th>
+                    <th class="col-sm-2">
+                        @Html.DisplayFor(modelItem => model.Local)
+                    </th>
+                    <th class="col-sm-2 col-form-label-sm">
+                        @Html.DisplayFor(modelItem => model.Status)
+                    </th>
+                    <th class="col-sm-2">
+                        @Html.DisplayFor(modelItem => model.Status)
+                    </th>
+                </tr>
+
+            }
+            <!--   <th class="col-sm-2"> -->
+            <!-- Html.DisplayNameFor(model => model.Distanciakm)-->
+            <!-- </th> -->
+        </table>
     </div>
+</div>
 
 
-    <!-- <a asp-action="Index">Voltar para página inicial</a> -->
+<!-- <a asp-action="Index">Voltar para página inicial</a> -->

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,11 +23,13 @@ namespace WebApplication1.Controllers
         }
 
         private readonly Contexto _context;
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var agenda = _context.Agenda
+                .Include(c => c.Cliente)
+                .AsNoTracking();
+            return View(await agenda.ToListAsync());
         }
-
         public IActionResult Dashboard()
         {
             return View();
@@ -39,7 +42,13 @@ namespace WebApplication1.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        [HttpPost]
+        public string CheckInOut()
+        {
+            // Realizar checkin ou checkout
 
+            return "Filipe";
+        }
 
     }
 }
