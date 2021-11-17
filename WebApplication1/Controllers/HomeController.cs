@@ -41,11 +41,11 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public string CheckInOut()
+        public IActionResult CheckInOut()
         {
             // Realizar checkin ou checkout
 
-            return "Filipe";
+            return Ok("Checkout");
         }
     }
 }
