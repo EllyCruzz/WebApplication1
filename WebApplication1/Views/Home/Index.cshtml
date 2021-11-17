@@ -6,31 +6,46 @@
 
 <div class="text-center">
     <!-- <h2 class="display-4">Alpha Sistemas</h2>   -->
-
 </div>
-
-
 
 <div class="row">
     <div class="col-md-6">
         <table class="table">
-            <th class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Horario)
-            </th>
-            <th class="col-sm-2">
-                @Html.DisplayNameFor(model => model.IdCliente)
-            </th>
-            <th class="col-sm-2 ">
-                @Html.DisplayNameFor(model => model.Status)
-                <!-- method="post" asp-action="CheckInOut" -->
-                <form>
-                    <button id="checkInOutButton" type="submit">Checkin</button>
-                </form>
-            </th>
+            <tr>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Horario)
+                </th>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IdCliente)
+                </th>
+                <th class="col-sm-2 ">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+            </tr>
+
+            @foreach (var model in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => model.Horario)
+                    </td>
+                    <td class="col-sm-2">
+                        @Html.DisplayFor(modelItem => model.IdCliente)
+                    </td>
+                    <td class="col-sm-2 ">
+                        @Html.DisplayFor(modelItem => model.Status)
+                        
+                        <!-- method="post" asp-action="CheckInOut" -->
+                        <form>
+                            <button id="checkInOutButton" type="submit">Checkin</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+
             <!--   <th class="col-sm-2"> -->
             <!--       Html.DisplayNameFor(Detalhes) -->
             <!--   </th> -->
-
         </table>
     </div>
 </div>
