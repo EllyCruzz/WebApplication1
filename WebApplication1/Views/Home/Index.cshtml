@@ -15,34 +15,34 @@
     <div class="col-md-6">
         <table class="table">
             <tr>
-                <th class="col-sm-2">
+                <td class="col-sm-2">
                     @Html.DisplayNameFor(model => model.Horario)
-                </th>
-                <th class="col-sm-2">
+                </td>
+                <td class="col-sm-2">
                     @Html.DisplayNameFor(model => model.IdCliente)
-                </th>
-                <th class="col-sm-2 ">
+                </td>
+                <td class="col-sm-2 ">
                     @Html.DisplayNameFor(model => model.Status)
-                    <!-- method="post" asp-action="CheckInOut" -->
-                    <form>
-                        <button id="checkInOutButton" type="submit">Checkin</button>
-                    </form>
-                </th>
+
+                </td>
             </tr>
 
             @foreach (var model in Model)
             {
                 <tr>
-                    <th>
+                    <td>
                         @Html.DisplayFor(modelItem => model.Horario)
-                    </th>
-                    <th class="col-sm-2">
+                    </td>
+                    <td class="col-sm-2">
                         @Html.DisplayFor(modelItem => model.IdCliente)
-                    </th>
-                    <th class="col-sm-2 ">
+                    </td>
+                    <td class="col-sm-2 ">
                         @Html.DisplayFor(modelItem => model.Status)
-
-                    </th>
+                        <!-- method="post" asp-action="CheckInOut" -->
+                        <form>
+                            <button id="checkInOutButton" type="submit">Checkin</button>
+                        </form>
+                    </td>
                 </tr>
             }
 
@@ -55,8 +55,11 @@
 </div>
 
 @section Scripts{
-    <script type="text/javascript">$(document).ready(function () {
+    <script type="text/javascript">
+        $(document).ready(function () {
             $("#checkInOutButton").click(function () {
+                event.preventDefault();
+
                 $.ajax({
                     type: 'POST',
                     url: '/Home/CheckInOut',
@@ -70,5 +73,6 @@
                     }
                 });
             });
-        })</script>
+        })
+    </script>
 }

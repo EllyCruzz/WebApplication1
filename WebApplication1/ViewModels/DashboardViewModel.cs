@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using WebApplication1.Models;
+using WebApplication1.ViewModels;
 
 namespace WebApplication1.ViewModels
 {

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WebApplication1.Models;
+using WebApplication1.ViewModels;
 
 namespace WebApplication1.Models
 {
@@ -16,18 +17,31 @@ namespace WebApplication1.Models
         public DbSet<SuporteModel> Suporte { get; set; }
         public DbSet<AgendaModel> Agenda { get; set; }
 
+        public DbSet<DashboardViewModel> Dashboard { get; set; }
+
         public Contexto(DbContextOptions<Contexto> options) : base(options)
         {
             // Database.EnsureCreated();
             _options = options;
         }
 
-      public IEnumerable<AgendaModel> GetAll()
-       {
-           using (var context = new Contexto())
+        public IEnumerable<AgendaModel> All
+        {
+            get
             {
-              
-               return context.Agenda;
+                using (var context = new Contexto())
+                {
+
+                    return context.Agenda;
+                }
+            }
+        }
+
+        public IEnumerable<DashboardViewModel> GetAll()
+        {
+            using (var context = new Contexto())
+            {
+                return context.Dashboard;
             }
         }
 

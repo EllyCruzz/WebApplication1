@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using WebApplication1.Models;
+using WebApplication1.ViewModels;
 
 
 
@@ -18,21 +18,39 @@ namespace WebApplication1.Controllers
 
         // GET: dashboard
 
-        
 
+        private readonly Contexto _context;
         public DashboardController(Contexto context)
         {
             _context = context;
         }
-        private readonly Contexto _context;
-        public async Task<IActionResult> Index()
+
+        public IActionResult Index()
         {
-            var agenda = _context.Agenda
-                .Include(c => c.Cliente)
-                .Include(c => c.Suporte)
-                .AsNoTracking();
-            return View(await agenda.ToListAsync());
+
+            return View();
+
+
         }
+
+        // TENTEI MAPEAR MAS NÃO CONSEGUI FAZER FUNCIONAR
+
+        /* public async Task<IActionResult> Index(ModelBuilder builder)
+        {
+            var dashboard = _context.Dashboard;
+         
+                            builder.Entity<DashboardViewModel>()
+                 .HasKey(s => s.IdCliente);
+
+                .Include(c => c.IdCliente)
+
+                .Include(c => c.IdSuporte)
+                .AsNoTracking();
+            return View(await dashboard.ToListAsync());
+        }
+
+        */
+
 
         //     public async Task<IActionResult> Dashboard()
         //     {
@@ -42,13 +60,7 @@ namespace WebApplication1.Controllers
         // return RedirectToAction("Dashboard");
         //
         //  public DBContext db = new DbContext();
-        //  public IActionResult Index()
-        // {
 
-        //    return View(Contexto.Agenda.ToList());
-
-
-        //   }
 
 
 
