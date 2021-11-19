@@ -10,11 +10,13 @@
 <link rel="stylesheet" type="text/css" href="~/css/site.css" />
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+<thead>
+    <h2 onload="time()" id="dataehora" style="width: 800px; height: 400px; position: relative;"></h2>
+
+    <div id="piechart_3d" style="width: 800px; height: 400px; position: relative;"></div>
+</thead>
 
 
-<div onload="time()" id="dataehora" style="width: 800px; height: 400px; position: relative;"></div>
-
-<div id="piechart_3d" style="width: 800px; height: 400px; position: relative;"></div>
 
 
 <h1>Dashboard</h1>
@@ -25,6 +27,7 @@
             <tr>
                 <td class="col-sm-2">
                     @Html.DisplayNameFor(model => model.Horario)
+
                 </td>
                 <td class="col-sm-2">
                     @Html.DisplayNameFor(model => model.IdCliente)
@@ -62,7 +65,7 @@
                     </td>
                     <td class="col-sm-2">
                         @Html.DisplayFor(modelItem => model.Status)
-                    </td> 
+                    </td>
                 </tr>
 
             }

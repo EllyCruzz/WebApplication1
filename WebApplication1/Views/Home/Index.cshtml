@@ -3,13 +3,19 @@
 @{
     ViewData["Title"] = "HomePage";
 }
-
+<link rel="stylesheet" type="text/css" href="~/css/site.css" />
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="text-center">
-    <!-- <h2 class="display-4">Alpha Sistemas</h2>   -->
+  <!--  <h2 class="display-4">Alpha Sistemas</h2> -->
 
 </div>
+<!--Hora e data do sistema, e gráfico-->
+<div onload="time()" style="width: 800px; height: 400px; position: relative;"></div>
+<div id="dataehora"></div>
 
+<div id="piechart_3d" style="width: 800px; height: 400px; position: relative;"></div>
 
+<!--fim da hora e gráfico-->
 
 <div class="row">
     <div class="col-md-6">
@@ -32,15 +38,19 @@
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => model.Horario)
+
                     </td>
                     <td class="col-sm-2">
                         @Html.DisplayFor(modelItem => model.IdCliente)
                     </td>
                     <td class="col-sm-2 ">
-                        @Html.DisplayFor(modelItem => model.Status)
-                        <!-- method="post" asp-action="CheckInOut" -->
+                        <!-- Html.DisplayFor(modelItem => model.Status)
+                         <!-- method="post" asp-action="CheckInOut" -->
                         <form>
+
+                            <!--Para cada linha do banco aparece um botão checkin-->
                             <button id="checkInOutButton" type="submit">Checkin</button>
+                            <div class="vazio"></div>
                         </form>
                     </td>
                 </tr>
@@ -58,21 +68,32 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#checkInOutButton").click(function () {
+                // possível toggle do texto do botão, mas não funcionou
+                $(".vazio").toggle();
+                $(this).val($(this).val() == 'Checkin' ? 'Checkout' : 'Checkin');
                 event.preventDefault();
 
                 $.ajax({
                     type: 'POST',
                     url: '/Home/CheckInOut',
-                    data: { },
+                    data: {},
                     success: function (result) {
                         $("#checkInOutButton").html(result);
                         console.log("Chamou o CheckInOut");
                     },
-                    error: function (result){
+                    error: function (result) {
                         console.log("Erro: ", result);
+
                     }
                 });
             });
         })
     </script>
+
+    <style>
+        button {
+            content: 'botao';
+        }
+    </style>
+}
 }

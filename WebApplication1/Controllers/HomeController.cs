@@ -47,7 +47,7 @@ namespace WebApplication1.Controllers
         public IActionResult CheckInOut()
         {
             // Realizar checkin ou checkout
-
+            // retorna quando clica no botão
             return Ok("Checkout");
         }
 

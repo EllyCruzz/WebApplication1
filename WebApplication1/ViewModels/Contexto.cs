@@ -17,7 +17,7 @@ namespace WebApplication1.Models
         public DbSet<SuporteModel> Suporte { get; set; }
         public DbSet<AgendaModel> Agenda { get; set; }
 
-        public DbSet<DashboardViewModel> Dashboard { get; set; }
+     //   public DbSet<DashboardViewModel> Dashboard { get; set; }
 
         public Contexto(DbContextOptions<Contexto> options) : base(options)
         {
@@ -25,11 +25,14 @@ namespace WebApplication1.Models
             _options = options;
         }
 
-        public IEnumerable<AgendaModel> All
+        public Contexto()
         {
-            get
-            {
-                using (var context = new Contexto())
+        }
+
+        public IEnumerable<AgendaModel> GetAll()
+        {
+
+            using (var context = new Contexto())
                 {
 
                     return context.Agenda;
@@ -37,16 +40,13 @@ namespace WebApplication1.Models
             }
         }
 
-        public IEnumerable<DashboardViewModel> GetAll()
+  /*      public IEnumerable<DashboardViewModel> GetAll()
         {
             using (var context = new Contexto())
             {
                 return context.Dashboard;
             }
         }
-
-        public Contexto()
-        {
-        }
+  */
+      
     }
-}
