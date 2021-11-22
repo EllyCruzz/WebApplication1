@@ -38,10 +38,11 @@ namespace WebApplication1.Controllers
         public async Task<IActionResult> Index()
         {
             var dashboard = _context.Agenda;
-    //include não funciona
-    .Include(c => c.Cliente)
-    .AsNoTracking();
-            return View(await dashboard.ToListAsync());
+            //include não funciona
+            //.Include(c => c.Cliente)
+            //.AsNoTracking();
+
+            return View(await dashboard.);
         }
 
         
