@@ -3,50 +3,93 @@
 @{
 
     ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 
 
 }
 
-<link rel="stylesheet" type="text/css" href="~/css/site.css" />
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<body onload="time()" style="width: 800px; height: 400px; position: relative;">
+    <link rel="stylesheet" type="text/css" href="~/css/site.css" />
 
-<thead>
-    <h2 onload="time()" id="dataehora" style="width: 800px; height: 400px; position: relative;"></h2>
-
-    <div id="piechart_3d" style="width: 800px; height: 400px; position: relative;"></div>
-</thead>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
+    <script>
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Checkin', 11],
+                ['Checkout', 2],
+                ['Pendente', 2],
+                ['Cancelado', 2],
+
+            ]);
+
+            var options = {
+                title: 'Gráfico de Percentual de Atendimento',
+                is3D: true,
+                colors: ['green', 'blue', 'gray', 'red']
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+
+    </script>
+    <p id="dataehora"></p>
+    <div id="piechart" style="width: 800px; height: 400px; position: relative;"></div>
+    <script>
 
 
-<h1>Dashboard</h1>
+        function time() {
+            today = new Date();
+            h = today.getHours();
+            m = today.getMinutes();
+            s = today.getSeconds();
+            dayName = new Array("domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado")
+            monName = new Array("janeiro", "fevereiro", "março", "abril", "maio", "junho", "agosto", "outubro", "novembro", "dezembro")
+            now = new Date
+            document.getElementById('dataehora').innerHTML = "<h3>Agenda do Suporte - " + dayName[now.getDay()] + ", " + now.getDate() + " de " + monName[now.getMonth()] + " de " + now.getFullYear() + ", " + h + ":" + m + ":" + s + ". </h3>";
+            setTimeout('time()', 500);
+        }
+    </script>
 
-<div class="row">
-    <div class="col-md-12">
-        <table class="table">
-            <tr>
-                <td class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Horario)
 
-                </td>
-                <td class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.IdCliente)
-                </td>
-                <td class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.IdSuporte)
-                </td>
-                <td class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Local)
-                </td>
-                <td class="col-sm-2 col-form-label-sm">
-                    @Html.DisplayNameFor(model => model.Status)
-                </td>
-                <td class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Status)
-                </td>
-            </tr>
-            @foreach (var model in Model)
-            {
+    <h1>Dashboard</h1>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <tr>
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Horario)
+
+                    </td>
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.IdCliente)
+                    </td>
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.IdSuporte)
+                    </td>
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Local)
+                    </td>
+                    <td class="col-sm-2 col-form-label-sm">
+                        @Html.DisplayNameFor(model => model.Status)
+                    </td>
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Status)
+                    </td>
+                </tr>
+                @foreach (var model in Model)
+                {
                 <tr>
                     <td class="col-sm-2">
                         @Html.DisplayFor(modelItem => model.Horario)
@@ -68,13 +111,19 @@
                     </td>
                 </tr>
 
-            }
-            <!--   <th class="col-sm-2"> -->
-            <!-- Html.DisplayNameFor(model => model.Distanciakm)-->
-            <!-- </th> -->
-        </table>
+                }
+
+                <!--   <th class="col-sm-2"> -->
+                <!-- Html.DisplayNameFor(model => model.Distanciakm)-->
+                <!-- </th> -->
+            </table>
+        </div>
     </div>
-</div>
-
-
+    
+</body>
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2021 - Externos Alpha
+    </div>
+</footer>
 <!-- <a asp-action="Index">Voltar para página inicial</a> -->

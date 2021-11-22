@@ -25,31 +25,26 @@ namespace WebApplication1.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        {
+       // public IActionResult Index()
+        //{
 
-            return View();
+        //    return View();
 
 
-        }
+        //}
 
         // TENTEI MAPEAR MAS NÃO CONSEGUI FAZER FUNCIONAR
 
-        /* public async Task<IActionResult> Index(ModelBuilder builder)
+        public async Task<IActionResult> Index()
         {
-            var dashboard = _context.Dashboard;
-         
-                            builder.Entity<DashboardViewModel>()
-                 .HasKey(s => s.IdCliente);
-
-                .Include(c => c.IdCliente)
-
-                .Include(c => c.IdSuporte)
-                .AsNoTracking();
+            var dashboard = _context.Agenda;
+    //include não funciona
+    .Include(c => c.Cliente)
+    .AsNoTracking();
             return View(await dashboard.ToListAsync());
         }
 
-        */
+        
 
 
         //     public async Task<IActionResult> Dashboard()

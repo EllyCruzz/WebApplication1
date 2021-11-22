@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,9 @@ namespace WebApplication1.Models
         public DbSet<ClienteModel> Cliente { get; set; }
         public DbSet<SuporteModel> Suporte { get; set; }
         public DbSet<AgendaModel> Agenda { get; set; }
+     
 
-     //   public DbSet<DashboardViewModel> Dashboard { get; set; }
+        //   public DbSet<DashboardViewModel> Dashboard { get; set; }
 
         public Contexto(DbContextOptions<Contexto> options) : base(options)
         {
@@ -32,6 +34,7 @@ namespace WebApplication1.Models
         public IEnumerable<AgendaModel> GetAll()
         {
 
+
             using (var context = new Contexto())
                 {
 
@@ -40,13 +43,14 @@ namespace WebApplication1.Models
             }
         }
 
-  /*      public IEnumerable<DashboardViewModel> GetAll()
+    //consertar
+    public IEnumerable<DashboardViewModel> GetViewModels()
         {
             using (var context = new Contexto())
             {
-                return context.Dashboard;
+                return (IEnumerable<DashboardViewModel>)context.Agenda;
             }
-        }
-  */
+       }
+  
       
     }

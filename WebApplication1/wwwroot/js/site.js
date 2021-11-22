@@ -4,27 +4,6 @@
 // Write your JavaScript code.
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-google.charts.load("current", { packages: ["corechart"] });
-google.charts.setOnLoadCallback(drawChart);
-function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Checkin', 11],
-        ['Checkout', 2],
-        ['Pendente', 2],
-        ['Cancelado', 2],
-
-    ]);
-
-    var options = {
-        title: 'Gráfico de Percentual de Atendimento',
-        is3D: true,
-        colors: ['green', 'blue', 'gray', 'red']
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-    chart.draw(data, options);
-}
 
 
 //Para data e hora
