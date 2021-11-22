@@ -14,7 +14,6 @@ namespace WebApplication1.ViewModels
 
     public class DashboardViewModel
     {
-
         [Required]
 
         [Display(Name = "Horario")]
@@ -29,8 +28,6 @@ namespace WebApplication1.ViewModels
         [ForeignKey("IdSuporte")]
         [Display(Name = "IdSuporte")]
         [Column("IdSuporte")]
-
-
         public virtual ClienteModel IdSuporte { get; set; }
 
         [Display(Name = "Local")]
