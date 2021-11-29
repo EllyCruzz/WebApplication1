@@ -17,7 +17,7 @@ namespace WebApplication1.Models
         public DbSet<ClienteModel> Cliente { get; set; }
         public DbSet<SuporteModel> Suporte { get; set; }
         public DbSet<AgendaModel> Agenda { get; set; }
-     
+
 
         //   public DbSet<DashboardViewModel> Dashboard { get; set; }
 
@@ -36,21 +36,18 @@ namespace WebApplication1.Models
 
 
             using (var context = new Contexto())
-                {
-
-                    return context.Agenda;
-                }
+            {
+                return context.Agenda;
             }
         }
 
-    //consertar
-    public IEnumerable<DashboardViewModel> GetViewModels()
+        //consertar
+        public IEnumerable<DashboardViewModel> GetViewModels()
         {
             using (var context = new Contexto())
             {
                 return (IEnumerable<DashboardViewModel>)context.Agenda;
             }
-       }
-  
-      
+        }
     }
+}

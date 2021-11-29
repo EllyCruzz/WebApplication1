@@ -4,8 +4,6 @@
 
     ViewData["Title"] = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
-
 }
 
 <body onload="time()" style="width: 800px; height: 400px; position: relative;">
@@ -29,25 +27,21 @@
                 ['Checkout', 2],
                 ['Pendente', 2],
                 ['Cancelado', 2],
-
             ]);
-
             var options = {
                 title: 'Gráfico de Percentual de Atendimento',
                 is3D: true,
                 colors: ['green', 'blue', 'gray', 'red']
             };
-
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
             chart.draw(data, options);
         }
-
     </script>
+
     <p id="dataehora"></p>
     <div id="piechart" style="width: 800px; height: 400px; position: relative;"></div>
+
     <script>
-
-
         function time() {
             today = new Date();
             h = today.getHours();
@@ -90,27 +84,26 @@
                 </tr>
                 @foreach (var model in Model)
                 {
-                <tr>
-                    <td class="col-sm-2">
-                        @Html.DisplayFor(modelItem => model.Horario)
-                    </td>
-                    <td class="col-sm-2">
-                        @Html.DisplayFor(modelItem => model.IdCliente)
-                    </td>
-                    <td class="col-sm-2">
-                        @Html.DisplayFor(modelItem => model.IdSuporte)
-                    </td>
-                    <td class="col-sm-2">
-                        @Html.DisplayFor(modelItem => model.Local)
-                    </td>
-                    <td class="col-sm-2 col-form-label-sm">
-                        @Html.DisplayFor(modelItem => model.Status)
-                    </td>
-                    <td class="col-sm-2">
-                        @Html.DisplayFor(modelItem => model.Status)
-                    </td>
-                </tr>
-
+                    <tr>
+                        <td class="col-sm-2">
+                            @Html.DisplayFor(modelItem => model.Horario)
+                        </td>
+                        <td class="col-sm-2">
+                            @Html.DisplayFor(modelItem => model.IdCliente)
+                        </td>
+                        <td class="col-sm-2">
+                            @Html.DisplayFor(modelItem => model.IdSuporte)
+                        </td>
+                        <td class="col-sm-2">
+                            @Html.DisplayFor(modelItem => model.Local)
+                        </td>
+                        <td class="col-sm-2 col-form-label-sm">
+                            @Html.DisplayFor(modelItem => model.Status)
+                        </td>
+                        <td class="col-sm-2">
+                            @Html.DisplayFor(modelItem => model.Status)
+                        </td>
+                    </tr>
                 }
 
                 <!--   <th class="col-sm-2"> -->
@@ -119,7 +112,7 @@
             </table>
         </div>
     </div>
-    
+
 </body>
 <footer class="border-top footer text-muted">
     <div class="container">

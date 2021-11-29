@@ -3,13 +3,12 @@
 @{
     ViewData["Title"] = "HomePage";
 }
+
 <link rel="stylesheet" type="text/css" href="~/css/site.css" />
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="text-center">
-  <!--  <h2 class="display-4">Alpha Sistemas</h2> -->
-
+    <!--  <h2 class="display-4">Alpha Sistemas</h2> -->
 </div>
-
 
 <div class="row">
     <div class="col-md-6">
@@ -43,12 +42,11 @@
                         <form>
 
                             <!--Para cada linha do banco aparece um botão checkin-->
-                            <button id="checkInOutButton" type="submit">Checkin</button>
-                            <div class="vazio"></div>
+                            <button class="checkInOutButton" type="submit">Checkin</button>
                         </form>
                     </td>
                 </tr>
-            }
+            } 
 
             <!--   <th class="col-sm-2"> -->
             <!--       Html.DisplayNameFor(Detalhes) -->
@@ -61,29 +59,25 @@
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#checkInOutButton").click(function () {
+            $(".checkInOutButton").click(function () {
                 // possível toggle do texto do botão, mas não funcionou
-                $(".vazio").toggle();
-                $(this).val($(this).val() == 'Checkin' ? 'Checkout' : 'Checkin');
-                event.preventDefault();
+                //$(".vazio").toggle();
+                console.log("Chamou o CheckInOut");
 
+                $(this).html($(this).html() == 'Checkin' ? 'Checkout' : 'Checkin');
+                event.preventDefault();
                 $.ajax({
-                    type: 'POST',
+                   type: 'POST',
                     url: '/Home/CheckInOut',
                     data: {},
                     success: function (result) {
-                        $("#checkInOutButton").html(result);
-                        console.log("Chamou o CheckInOut");
+                        $(this).html(result);
                     },
                     error: function (result) {
                         console.log("Erro: ", result);
-
                     }
                 });
             });
-        })
+        });
     </script>
-
-
-}
 }

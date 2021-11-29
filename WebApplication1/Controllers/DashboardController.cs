@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,7 @@ namespace WebApplication1.Controllers
             _context = context;
         }
 
-       // public IActionResult Index()
+        // public IActionResult Index()
         //{
 
         //    return View();
@@ -35,16 +36,32 @@ namespace WebApplication1.Controllers
 
         // TENTEI MAPEAR MAS NÃO CONSEGUI FAZER FUNCIONAR
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var dashboard = _context.Agenda;
-    //include não funciona
-    .Include(c => c.Cliente)
-    .AsNoTracking();
-            return View(await dashboard.ToListAsync());
+
+
+            int x = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
+
+           // var dashboard = _context.Agenda;
+            foreach (var item in _context.Cliente)
+            {
+                if (item.IdCliente == x)
+                {
+                    var y = item;
+                    return View(y);
+
+                }
+
+                
+            }
+            return View();
+            //include não funciona
+            //.Include(c => c.Cliente)
+            // .AsNoTracking();
+
+
         }
 
-        
 
 
         //     public async Task<IActionResult> Dashboard()
