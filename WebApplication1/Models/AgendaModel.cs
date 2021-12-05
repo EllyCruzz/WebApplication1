@@ -12,7 +12,6 @@ namespace WebApplication1.Models
     [Table("Agenda")]
     public class AgendaModel
     {
-
         // tabela agenda
         [Required]
 
@@ -25,13 +24,14 @@ namespace WebApplication1.Models
         [Display(Name = "Cliente")]
         [Column("IdCliente")]
         public int IdCliente { get; set; }
+
         public ClienteModel Cliente { get; set; }
 
         [ForeignKey("IdSuporte")]
         [Display(Name = "IdSuporte")]
         [Column("IdSuporte")]
-
         public int IdSuporte { get; set; }
+
         public ClienteModel Suporte { get; set; }
 
         [Display(Name = "Horario")]
