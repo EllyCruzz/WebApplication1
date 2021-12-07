@@ -35,25 +35,34 @@ namespace WebApplication1.Controllers
 
         // TENTEI MAPEAR MAS NÃO CONSEGUI FAZER FUNCIONAR
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var date = Convert.ToDateTime("2021-12-07"); //DateTime.Today;
 
+            var agenda = _context.Agenda
+                .FromSqlRaw("SELECT C.Nome, C.Local, A.Horario, A.Status, S.Nome" +
+                " FROM Agenda AS A " +
+                " INNER JOIN Cliente AS C ON A.ClienteIdCliente = C.IdCliente" +
+                " INNER JOIN Suporte AS S ON A.SuporteIdCliente = S.IdSuporte" +
+                " WHERE A.Data >=" + date + " AND A.Data < " + date.AddDays(1))
+                .ToList();
 
-            int x = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
-
-           // var dashboard = _context.Agenda;
-            foreach (var item in _context.Cliente)
-            {
-                if (item.IdCliente == x)
-                {
-                    var y = item;
-                    return View(y);
-
-                }
-
-                
-            }
             return View();
+            // int x = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
+
+            // var dashboard = _context.Agenda;
+            //foreach (var item in _context.Cliente)
+            //{
+            //    if (item.IdCliente == x)
+            //    {
+            //        var y = item;
+            //        return View(y);
+
+            //    }
+
+
+            //}
+            //return View();
             //include não funciona
             //.Include(c => c.Cliente)
             // .AsNoTracking();

@@ -38,6 +38,9 @@ namespace WebApplication1.Models
         [Column("Horario")]
         public string Horario { get; set; }
 
+        [Column("Data")]
+        public DateTime Data { get; set; }
+
         [Display(Name = "Status")]
         [Column("Status")]
         public int Status { get; set; }
