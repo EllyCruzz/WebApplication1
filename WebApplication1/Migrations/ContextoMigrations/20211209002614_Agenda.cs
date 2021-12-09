@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication1.Migrations.ContextoMigrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Agenda : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,6 +46,7 @@ namespace WebApplication1.Migrations.ContextoMigrations
                     IdSuporte = table.Column<int>(type: "int", nullable: false),
                     SuporteIdCliente = table.Column<int>(type: "int", nullable: true),
                     Horario = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Data = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

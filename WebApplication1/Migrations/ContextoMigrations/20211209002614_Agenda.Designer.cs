@@ -6,13 +6,12 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication1.Models;
-using WebApplication1.ViewModels;
 
 namespace WebApplication1.Migrations.ContextoMigrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20211107182728_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20211209002614_Agenda")]
+    partial class Agenda
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +31,10 @@ namespace WebApplication1.Migrations.ContextoMigrations
 
                     b.Property<int?>("ClienteIdCliente")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Data");
 
                     b.Property<string>("Horario")
                         .HasColumnType("nvarchar(max)")
