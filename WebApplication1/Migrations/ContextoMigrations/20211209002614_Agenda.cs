@@ -75,9 +75,12 @@ namespace WebApplication1.Migrations.ContextoMigrations
                 name: "IX_Agenda_SuporteIdCliente",
                 table: "Agenda",
                 column: "SuporteIdCliente");
+
+           
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
+
+protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Agenda");
@@ -88,5 +91,6 @@ namespace WebApplication1.Migrations.ContextoMigrations
             migrationBuilder.DropTable(
                 name: "Cliente");
         }
+
     }
 }

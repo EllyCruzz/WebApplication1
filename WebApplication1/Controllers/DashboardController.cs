@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Configuration;
 using WebApplication1.Models;
 using WebApplication1.ViewModels;
 
@@ -13,8 +14,17 @@ using WebApplication1.ViewModels;
 
 namespace WebApplication1.Controllers
 {
+   
+
+
     public class DashboardController : Controller
     {
+        //private readonly IConfiguration _configuration;
+        //public DashboardController(IConfiguration configuration)
+        //{
+        //    _configuration = configuration;
+        //}
+
 
         // GET: dashboard
 
@@ -33,21 +43,21 @@ namespace WebApplication1.Controllers
 
         //}
 
-        // TENTEI MAPEAR MAS NÃO CONSEGUI FAZER FUNCIONAR
+        // não funciona
 
-        public async Task<IActionResult> Index()
+    //    public List<DashboardViewModel> listarDashboard = new List<DashboardViewModel>()
+    //    {
+    //        new DashboardViewModel() {IdCliente=1, IdSuporte=1, Local="fabrica", Status=0}
+    //};
+        public IActionResult Index()
         {
-            var date = Convert.ToDateTime("2021-12-07"); //DateTime.Today;
 
-            var agenda = _context.Agenda
-                .FromSqlRaw("SELECT C.Nome, C.Local, A.Horario, A.Status, S.Nome" +
-                " FROM Agenda AS A " +
-                " INNER JOIN Cliente AS C ON A.ClienteIdCliente = C.IdCliente" +
-                " INNER JOIN Suporte AS S ON A.SuporteIdCliente = S.IdSuporte" +
-                " WHERE A.Data >=" + date + " AND A.Data < " + date.AddDays(1))
-                .ToList();
 
-            return View();
+
+            DashboardViewModel dash = new DashboardViewModel();
+
+            return View(dash.RecuperarLista());
+        
             // int x = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
 
             // var dashboard = _context.Agenda;
