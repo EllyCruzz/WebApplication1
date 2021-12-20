@@ -62,7 +62,7 @@ namespace WebApplication1.ViewModels
             {
 
                 
-                conexao.ConnectionString = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
+                conexao.ConnectionString = "Data Source=LAPTOP-RVT4934F\\MSSQLSERVER01;Initial Catalog=NewCodeFirstDB;";
                 conexao.Open();
                 using (var comando = new SqlCommand())
                 {
