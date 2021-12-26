@@ -64,7 +64,7 @@
                 //$(".vazio").toggle();
                 console.log("Chamou o CheckInOut");
 
-                $(this).html($(this).html() == 'Checkin' ? 'Checkout' : 'Checkin');
+                $(this).html($(this).html() == 'Checkin' ? 'Checkout' : 'Ok');
                 event.preventDefault();
                 $.ajax({
                    type: 'POST',

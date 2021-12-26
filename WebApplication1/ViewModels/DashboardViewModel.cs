@@ -62,12 +62,12 @@ namespace WebApplication1.ViewModels
             {
 
                 
-                conexao.ConnectionString = "Data Source=LAPTOP-RVT4934F\\MSSQLSERVER01;Initial Catalog=NewCodeFirstDB;";
+                conexao.ConnectionString = "Data Source=LAPTOP-RVT4934F\\MSSQLSERVER01;Initial Catalog=NewCodeFirstDB;;Integrated Security=SSPI;";
                 conexao.Open();
                 using (var comando = new SqlCommand())
                 {
                     comando.Connection = conexao;
-                    DateTime date = Convert.ToDateTime("2021-12-07"); //DateTime.Today;
+                    DateTime date = Convert.ToDateTime("2021-04-12T00:00:00"); //DateTime.Today;
                     comando.CommandText = "SELECT C.Nome, C.Local, A.Horario, A.Status, S.Nome" +
                 " FROM Agenda AS A " +
                 " INNER JOIN Cliente AS C ON A.ClienteIdCliente = C.IdCliente" +
