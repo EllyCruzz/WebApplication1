@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1.Models;
+using WebApplication1.Repositories;
 using WebApplication1.ViewModels;
 
 namespace WebApplication1
@@ -30,6 +31,7 @@ namespace WebApplication1
 
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDBContext>();
             services.AddControllersWithViews();
+            services.AddScoped<DashboardRespository, DashboardRespository>();
             services.AddDbContext<Contexto>(c => c.UseSqlServer(connectionString));
             services.AddDbContext<AppDBContext>(c => c.UseSqlServer(connectionString));
         }
